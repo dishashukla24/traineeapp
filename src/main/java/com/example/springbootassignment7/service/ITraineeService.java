@@ -1,0 +1,19 @@
+package com.example.springbootassignment7.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import com.example.springbootassignment7.entities.Trainee;
+
+
+
+public interface ITraineeService {
+    Trainee addTrainee(Trainee t);
+    boolean deleteTrainee(int id);
+    Trainee updateTrainee(int id, Trainee t);
+    Optional<Trainee> getTrainee(int id);
+    List<Trainee> getAllTrainees();
+    Optional<Trainee> findBytraineeName(String name);
+
+
+}
