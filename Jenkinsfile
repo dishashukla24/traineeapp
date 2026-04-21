@@ -13,6 +13,22 @@ pipeline {
         sh './mvnw clean package -DskipTests'
     }
 }
+stage('Check Docker') {
+    steps {
+        sh 'docker --version'
+    }
+}
+
+stage('Check PATH') {
+    steps {
+        sh 'echo $PATH'
+    }
+}
+stage('Check Docker Path') {
+    steps {
+        sh '/usr/local/bin/docker --version'
+    }
+}
 
         stage('Build Docker Image') {
             steps {
