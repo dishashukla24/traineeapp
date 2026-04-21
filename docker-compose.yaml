@@ -1,21 +1,19 @@
+version: "3"
+
 services:
   db:
-    image: postgres:latest
-    container_name: postgres_db
-    restart: always
+    image: postgres:13
+    container_name: postgres-db
     environment:
       POSTGRES_DB: employeedb
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: disha24
     ports:
       - "5433:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
 
   app:
-    build: .
-    container_name: trainee_app
-    restart: always
+    image: traineeapp
+    container_name: springboot-app
     depends_on:
       - db
     ports:
@@ -24,6 +22,3 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/employeedb
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: disha24
-
-volumes:
-  postgres_data:
