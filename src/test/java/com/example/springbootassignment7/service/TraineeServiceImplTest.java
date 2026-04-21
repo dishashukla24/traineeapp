@@ -34,14 +34,14 @@ class TraineeServiceImplTest {
     // ✅ Test addTrainee
     @Test
     void testAddTrainee() {
-        Trainee t = new Trainee(1, "Shreya", "Java", "Delhi");
+        Trainee t = new Trainee(1, "Disha", "Java", "Delhi");
 
         Mockito.when(repo.save(t)).thenReturn(t);
 
         Trainee result = service.addTrainee(t);
 
         assertNotNull(result);
-        assertEquals("Shreya", result.getTraineeName());
+        assertEquals("Disha", result.getTraineeName());
 
         Mockito.verify(repo, Mockito.times(1)).save(t);
     }
@@ -50,7 +50,7 @@ class TraineeServiceImplTest {
     @Test
     void testGetAllTrainees() {
         List<Trainee> list = new ArrayList<>();
-        list.add(new Trainee(1, "Shreya", "Java", "Delhi"));
+        list.add(new Trainee(1, "Disha", "Java", "Delhi"));
 
         Mockito.when(repo.findAll()).thenReturn(list);
 
@@ -65,14 +65,14 @@ class TraineeServiceImplTest {
     // ✅ Test getTrainee (found)
     @Test
     void testGetTraineeFound() {
-        Trainee t = new Trainee(1, "Shreya", "Java", "Delhi");
+        Trainee t = new Trainee(1, "Disha", "Java", "Delhi");
 
         Mockito.when(repo.findById(1)).thenReturn(Optional.of(t));
 
         Optional<Trainee> result = service.getTrainee(1);
 
         assertTrue(result.isPresent());
-        assertEquals("Shreya", result.get().getTraineeName());
+        assertEquals("Disha", result.get().getTraineeName());
 
         Mockito.verify(repo, Mockito.times(1)).findById(1);
     }
@@ -93,7 +93,7 @@ class TraineeServiceImplTest {
     @Test
     void testUpdateTraineeSuccess() {
         Trainee existing = new Trainee(1, "Old", "Python", "Noida");
-        Trainee updated = new Trainee(1, "Shreya", "Java", "Delhi");
+        Trainee updated = new Trainee(1, "Disha", "Java", "Delhi");
 
         Mockito.when(repo.findById(1)).thenReturn(Optional.of(existing));
         Mockito.when(repo.save(existing)).thenReturn(existing);
@@ -101,7 +101,7 @@ class TraineeServiceImplTest {
         Trainee result = service.updateTrainee(1, updated);
 
         assertNotNull(result);
-        assertEquals("Shreya", result.getTraineeName());
+        assertEquals("Disha", result.getTraineeName());
         assertEquals("Java", result.getTraineeDomain());
 
         Mockito.verify(repo, Mockito.times(1)).findById(1);
@@ -111,7 +111,7 @@ class TraineeServiceImplTest {
     // ❌ Test updateTrainee (not found)
     @Test
     void testUpdateTraineeNotFound() {
-        Trainee updated = new Trainee(1, "Shreya", "Java", "Delhi");
+        Trainee updated = new Trainee(1, "Disha", "Java", "Delhi");
 
         Mockito.when(repo.findById(1)).thenReturn(Optional.empty());
 
@@ -150,17 +150,17 @@ class TraineeServiceImplTest {
     // ✅ Test findByName
     @Test
     void testFindByName() {
-        Trainee t = new Trainee(1, "Shreya", "Java", "Delhi");
+        Trainee t = new Trainee(1, "Disha", "Java", "Delhi");
 
-        Mockito.when(repo.findBytraineeName("Shreya"))
+        Mockito.when(repo.findBytraineeName("Disha"))
                 .thenReturn(Optional.of(t));
 
-        Optional<Trainee> result = service.findBytraineeName("Shreya");
+        Optional<Trainee> result = service.findBytraineeName("Disha");
 
         assertTrue(result.isPresent());
-        assertEquals("Shreya", result.get().getTraineeName());
+        assertEquals("Disha", result.get().getTraineeName());
 
         Mockito.verify(repo, Mockito.times(1))
-                .findBytraineeName("Shreya");
+                .findBytraineeName("Disha");
     }
 }

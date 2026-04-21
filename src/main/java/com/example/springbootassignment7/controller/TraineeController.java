@@ -34,6 +34,7 @@ public class TraineeController {
 	}
 	
 	@GetMapping("/trainees/{id}")
+	
     public Trainee getTrainee(@PathVariable int id) {
         Optional<Trainee> trainee = iTraineeService.getTrainee(id);
 

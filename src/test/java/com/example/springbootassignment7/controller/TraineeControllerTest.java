@@ -28,7 +28,7 @@ class TraineeControllerTest {
     @Test
     void testGetAllTrainees() {
         List<Trainee> list = new ArrayList<>();
-        list.add(new Trainee(1, "Shreya","CSE","Noida"));
+        list.add(new Trainee(1, "Disha","CSE","Noida"));
 
         Mockito.when(traineeService.getAllTrainees()).thenReturn(list);
 
@@ -42,14 +42,14 @@ class TraineeControllerTest {
 
     @Test
     void testGetTraineeById() {
-        Trainee t = new Trainee(1, "Shreya","CSE","Noida");
+        Trainee t = new Trainee(1, "Disha","CSE","Noida");
 
         Mockito.when(traineeService.getTrainee(1)).thenReturn(Optional.of(t));
 
         Trainee result = traineeController.getTrainee(1);
 
         assertNotNull(result);
-        assertEquals("Shreya", result.getTraineeName());
+        assertEquals("Disha", result.getTraineeName());
 
         Mockito.verify(traineeService, Mockito.times(1)).getTrainee(1);
     }
@@ -67,30 +67,30 @@ class TraineeControllerTest {
 
     @Test
     void testFindByName() {
-        Trainee t = new Trainee(1, "Shreya","CSE","Noida");
+        Trainee t = new Trainee(1, "Disha","CSE","Noida");
 
-        Mockito.when(traineeService.findBytraineeName("Shreya"))
+        Mockito.when(traineeService.findBytraineeName("Disha"))
                 .thenReturn(Optional.of(t));
 
-        Trainee result = traineeController.findBytraineeName("Shreya");
+        Trainee result = traineeController.findBytraineeName("Disha");
 
         assertNotNull(result);
-        assertEquals("Shreya", result.getTraineeName());
+        assertEquals("Disha", result.getTraineeName());
 
         Mockito.verify(traineeService, Mockito.times(1))
-                .findBytraineeName("Shreya");
+                .findBytraineeName("Disha");
     }
 
     @Test
     void testAddTrainee() {
-        Trainee t = new Trainee(1, "Shreya","CSE","Noida");
+        Trainee t = new Trainee(1, "Disha","CSE","Noida");
 
         Mockito.when(traineeService.addTrainee(t)).thenReturn(t);
 
         Trainee result = traineeController.addTrainee(t);
 
         assertNotNull(result);
-        assertEquals("Shreya", result.getTraineeName());
+        assertEquals("Disha", result.getTraineeName());
 
         Mockito.verify(traineeService, Mockito.times(1)).addTrainee(t);
     }
