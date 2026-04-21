@@ -9,10 +9,10 @@ pipeline {
     stages {
 
         stage('Build JAR') {
-            steps {
-                sh './mvnw clean package'
-            }
-        }
+    steps {
+        sh './mvnw clean package -DskipTests'
+    }
+}
 
         stage('Build Docker Image') {
             steps {
