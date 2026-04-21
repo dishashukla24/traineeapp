@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "trainee-app"
+        IMAGE_NAME = "traineeapp"
         DOCKERHUB_USER = "dishashukla24"
-        CONTAINER_NAME = "traineeapi-container"
+        CONTAINER_NAME = "exciting_chaplygin"
     }
 
     stages {

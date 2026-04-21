@@ -1,0 +1,30 @@
+
+services:
+  db:
+    image: traineeapp
+    container_name: exciting_chaplygin
+    restart: always
+    environment:
+      POSTGRES_DB: employeedb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: disha24
+    ports:
+      - "5433:5433"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: exciting_chaplygin
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "8088:8087"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5433/employeedb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: disha24
+
+volumes:
+  postgres_data:
