@@ -4,7 +4,6 @@ pipeline {
     environment {
         IMAGE_NAME = "traineeapp"
         DOCKERHUB_USER = "dishashukla24"
-        CONTAINER_NAME = "exciting_chaplygin"
     }
 
     stages {
@@ -47,11 +46,11 @@ pipeline {
             }
         }
 
-        stage('Run Container') {
+        stage('Run Containers') {
             steps {
                 sh '''
-                docker rm -f $CONTAINER_NAME || true
-                docker run -d -p 8085:8085 --name $CONTAINER_NAME $IMAGE_NAME
+                docker compose down || true
+                docker compose up -d --build
                 '''
             }
         }
