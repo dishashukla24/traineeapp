@@ -8,8 +8,6 @@ services:
       POSTGRES_DB: employeedb
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: disha24
-    ports:
-      - "5433:5432"
 
   app:
     image: traineeapp
