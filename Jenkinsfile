@@ -2,10 +2,11 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "traineeapp"
-        DOCKERHUB_USER = "dishashukla24"
-        DOCKER_PATH = "/Applications/Docker.app/Contents/Resources/bin/docker"
-    }
+    IMAGE_NAME = "traineeapp"
+    DOCKERHUB_USER = "dishashukla24"
+    DOCKER_PATH = "/Applications/Docker.app/Contents/Resources/bin/docker"
+    PATH = "/Applications/Docker.app/Contents/Resources/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+}
 
     stages {
 
