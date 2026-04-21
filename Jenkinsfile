@@ -51,8 +51,11 @@ pipeline {
         stage('Run Containers') {
             steps {
                 sh '''
-                $DOCKER_PATH compose down || true
-                $DOCKER_PATH compose up -d --build
+                $DOCKER_PATH rm -f postgres-db || true
+				$DOCKER_PATH rm -f springboot-app || true
+
+				$DOCKER_PATH compose down || true
+				$DOCKER_PATH compose up -d --build
                 '''
             }
         }
